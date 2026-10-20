@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bicicleteria Bastian</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="db.js"></script>
+</head>
+<body>
+
+    <div class="form">
+        <h1>Bicicleteria Bastian</h1>
+
+        <input type="text" id="marca" placeholder="Ingresa la marca">
+
+        <input type="number" id="stock"
+            placeholder="Ingresa el stock disponible" min="0">
+
+        <input type="text" id="color" placeholder="Ingresa el color">
+
+        <input type="text" id="tipo"
+            placeholder="Ingresa el tipo (ej.: deportiva, paseo)">
+
+        <button id="btn">Agregar bicicleta</button>
+    </div>
+
+    <h2>Bicicletas disponibles</h2>
+
+    <div class="buscador">
+        <input type="text" id="buscarMarca"
+            placeholder="Buscar bicicleta por marca...">
+        <button type="button" id="limpiar">Limpiar busqueda</button>
+    </div>
+
+    <div class="contenedor-tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID generado</th>
+                    <th>Marca</th>
+                    <th>Stock</th>
+                    <th>Color</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaBicicletas"></tbody>
+        </table>
+    </div>
+
+    <p id="mensaje"></p>
+
+</body>
+<script src="db.js"></script>
+<link rel="stylesheet" href="style.css">
+</html>
