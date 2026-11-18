@@ -29,6 +29,7 @@ const botonGuardar = document.querySelector("#btn");
 
 const inputBuscar = document.querySelector("#buscarMarca");
 const botonLimpiar = document.querySelector("#limpiar");
+const botonBuscar = document.querySelector("#buscar");
 
 const tabla = document.querySelector("#tablaBicicletas");
 const mensaje = document.querySelector("#mensaje");
@@ -93,25 +94,22 @@ onValue(bicicletasRef, function (datos) {
     registros = datos.val() || {};
 
     mostrarBicicletas();
-    
+
 }, function (error) {
+
     mensaje.textContent =
         "Error al leer los datos: " + error.message;
+
 });
 
-function mostrarBicicletas() {
 
-    const busqueda = inputBuscar.value.trim().toLowerCase();
+function mostrarBicicletas() {
 
     tabla.innerHTML = "";
 
     let cantidad = 0;
 
     Object.entries(registros).forEach(function ([clave, bicicleta]) {
-
-        if (!bicicleta.marca.toLowerCase().includes(busqueda)) {
-            return;
-        }
 
         const fila = document.createElement("tr");
 
@@ -124,32 +122,97 @@ function mostrarBicicletas() {
         ];
 
         valores.forEach(function (valor) {
+
             const celda = document.createElement("td");
+
             celda.textContent = valor;
+
             fila.appendChild(celda);
+
         });
 
         tabla.appendChild(fila);
+
         cantidad++;
+
     });
 
     if (cantidad === 0) {
-        const fila = document.createElement("tr");
-        const celda = document.createElement("td");
 
-        celda.colSpan = 5;
-        celda.textContent = busqueda
-            ? "No se encontraron bicicletas con esa marca."
-            : "Todavia no hay bicicletas cargadas.";
+        tabla.innerHTML =
+        "<tr><td colspan='5'>Todavia no hay bicicletas cargadas.</td></tr>";
 
-        fila.appendChild(celda);
-        tabla.appendChild(fila);
     }
 }
 
 
+function buscarBicicletas() {
+
+    const busqueda = inputBuscar.value.trim().toLowerCase();
+
+    tabla.innerHTML = "";
+
+    const claves = Object.keys(registros);
+
+    let cantidad = 0;
+
+    for (let i = 0; i < claves.length; i++) {
+
+        const clave = claves[i];
+
+        const bicicleta = registros[clave];
+
+        if (bicicleta.marca.toLowerCase().includes(busqueda)) {
+
+            const fila = document.createElement("tr");
+
+            const valores = [
+                clave,
+                bicicleta.marca,
+                bicicleta.stock,
+                bicicleta.color,
+                bicicleta.tipo
+            ];
+
+            for (let j = 0; j < valores.length; j++) {
+
+                const celda = document.createElement("td");
+
+                celda.textContent = valores[j];
+
+                fila.appendChild(celda);
+
+            }
+
+            tabla.appendChild(fila);
+
+            cantidad++;
+
+        }
+
+    }
+
+    if (cantidad === 0) {
+
+        tabla.innerHTML =
+        "<tr><td colspan='5'>No se encontraron bicicletas.</td></tr>";
+
+    }
+
+}
+
+
+botonBuscar.onclick = function () {
+
+    buscarBicicletas();
+
+};
+
 
 botonLimpiar.onclick = function () {
+
     inputBuscar.value = "";
+
     mostrarBicicletas();
+
 };
