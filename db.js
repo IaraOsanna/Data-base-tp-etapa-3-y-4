@@ -142,6 +142,8 @@ function mostrarBicicletas() {
 
 function buscarBicicletas() {
 
+    mensaje.textContent = "";
+
     const busqueda = inputBuscar.value.trim().toLowerCase();
 
     tabla.innerHTML = "";
@@ -153,7 +155,6 @@ function buscarBicicletas() {
     for (let i = 0; i < claves.length; i++) {
 
         const clave = claves[i];
-
         const bicicleta = registros[clave];
 
         if (bicicleta.marca.toLowerCase().includes(busqueda)) {
@@ -175,14 +176,17 @@ function buscarBicicletas() {
                 celda.textContent = valores[j];
 
                 fila.appendChild(celda);
-
             }
 
             tabla.appendChild(fila);
 
             cantidad++;
-
         }
+    }
+
+    mensaje.textContent = "";
+
+}
 
     }
 
@@ -201,8 +205,6 @@ botonBuscar.onclick = function () {
     mensaje.textContent = "Buscando...";
 
     buscarBicicletas();
-
-    mensaje.textContent = "";
 
 };
 };
