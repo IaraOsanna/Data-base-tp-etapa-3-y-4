@@ -80,6 +80,13 @@ botonGuardar.onclick = function () {
             "Error al guardar la bicicleta: " + error.message;
     });
 };
+botonLimpiar.onclick = function () {
+
+    inputBuscar.value = "";
+
+    mostrarBicicletas();
+
+};
 
 onValue(bicicletasRef, function (datos) {
 
@@ -140,7 +147,7 @@ function mostrarBicicletas() {
     }
 }
 
-inputBuscar.addEventListener("input", mostrarBicicletas);
+
 
 botonLimpiar.onclick = function () {
     inputBuscar.value = "";
