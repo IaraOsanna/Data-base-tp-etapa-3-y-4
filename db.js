@@ -202,6 +202,9 @@ botonBuscar.onclick = function () {
 
     buscarBicicletas();
 
+    mensaje.textContent = "";
+
+};
 };
 
 
