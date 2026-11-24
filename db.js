@@ -197,7 +197,6 @@ function buscarBicicletas() {
 
     }
 botonBuscar.onclick = function () {
-
     mensaje.textContent = "Buscando...";
 
     buscarBicicletas();
