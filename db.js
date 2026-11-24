@@ -141,6 +141,7 @@ function mostrarBicicletas() {
 
 
 
+
 function buscarBicicletas() {
 
     mensaje.textContent = "";
@@ -194,18 +195,22 @@ function buscarBicicletas() {
 
 }
 
-botonBuscar.onclick = function () {
-    mensaje.textContent = "Buscando...";
+
+botonBuscar.addEventListener("click", function () {
 
     buscarBicicletas();
 
-};
+});
 
 
-botonLimpiar.onclick = function () {
+botonLimpiar.addEventListener("click", function () {
 
     inputBuscar.value = "";
 
+    mensaje.textContent = "";
+
     mostrarBicicletas();
+
+});
 
 };
