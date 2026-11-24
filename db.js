@@ -142,6 +142,7 @@ function mostrarBicicletas() {
 
 
 
+
 function buscarBicicletas() {
 
     mensaje.textContent = "";
@@ -157,6 +158,7 @@ function buscarBicicletas() {
     for (let i = 0; i < claves.length; i++) {
 
         const clave = claves[i];
+
         const bicicleta = registros[clave];
 
         if (bicicleta.marca.toLowerCase().includes(busqueda)) {
@@ -178,12 +180,15 @@ function buscarBicicletas() {
                 celda.textContent = valores[j];
 
                 fila.appendChild(celda);
+
             }
 
             tabla.appendChild(fila);
 
             cantidad++;
+
         }
+
     }
 
     if (cantidad === 0) {
@@ -196,21 +201,19 @@ function buscarBicicletas() {
 }
 
 
-botonBuscar.addEventListener("click", function () {
+botonBuscar.onclick = function () {
 
     buscarBicicletas();
 
-});
+};
 
 
-botonLimpiar.addEventListener("click", function () {
+botonLimpiar.onclick = function () {
 
     inputBuscar.value = "";
 
     mensaje.textContent = "";
 
     mostrarBicicletas();
-
-});
 
 };
