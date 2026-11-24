@@ -196,9 +196,6 @@ function buscarBicicletas() {
         "<tr><td colspan='5'>No se encontraron bicicletas.</td></tr>";
 
     }
-
-
-
 botonBuscar.onclick = function () {
 
     mensaje.textContent = "Buscando...";
