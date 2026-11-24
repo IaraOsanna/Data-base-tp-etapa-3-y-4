@@ -188,7 +188,7 @@ function buscarBicicletas() {
 
 }
 
-    }
+    
 
     if (cantidad === 0) {
 
