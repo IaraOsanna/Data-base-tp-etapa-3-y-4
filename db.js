@@ -140,6 +140,7 @@ function mostrarBicicletas() {
 }
 
 
+
 function buscarBicicletas() {
 
     mensaje.textContent = "";
@@ -184,18 +185,15 @@ function buscarBicicletas() {
         }
     }
 
-    mensaje.textContent = "";
-
-}
-
-    
-
     if (cantidad === 0) {
 
         tabla.innerHTML =
         "<tr><td colspan='5'>No se encontraron bicicletas.</td></tr>";
 
     }
+
+}
+
 botonBuscar.onclick = function () {
     mensaje.textContent = "Buscando...";
 
