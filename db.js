@@ -25,6 +25,7 @@ const inputMarca = document.querySelector("#marca");
 const inputStock = document.querySelector("#stock");
 const inputColor = document.querySelector("#color");
 const inputTipo = document.querySelector("#tipo");
+const inputPrecio = document.querySelector("#precio");
 const botonGuardar = document.querySelector("#btn");
 
 const inputBuscar = document.querySelector("#buscarMarca");
@@ -44,12 +45,14 @@ botonGuardar.onclick = function () {
     const stock = inputStock.value;
     const color = inputColor.value.trim();
     const tipo = inputTipo.value.trim();
+    const precio = inputPrecio.value.trim()
 
     if (
         marca === "" ||
         stock === "" ||
         color === "" ||
-        tipo === ""
+        tipo === "" ||
+        precio === "" 
     ) {
         mensaje.textContent = "Completa todos los campos.";
         return;
@@ -64,7 +67,8 @@ botonGuardar.onclick = function () {
         marca: marca,
         stock: Number(stock),
         color: color,
-        tipo: tipo
+        tipo: tipo,
+        precio: Number(precio)
     })
     .then(function () {
         mensaje.textContent = "Bicicleta guardada correctamente.";
@@ -73,6 +77,7 @@ botonGuardar.onclick = function () {
         inputStock.value = "";
         inputColor.value = "";
         inputTipo.value = "";
+        inputPrecio.value = "";
 
         inputMarca.focus();
     })
@@ -112,7 +117,8 @@ function mostrarBicicletas() {
             bicicleta.marca,
             bicicleta.stock,
             bicicleta.color,
-            bicicleta.tipo
+            bicicleta.tipo,
+            bicicleta.precio
         ];
 
         valores.forEach(function (valor) {
@@ -134,7 +140,7 @@ function mostrarBicicletas() {
     if (cantidad === 0) {
 
         tabla.innerHTML =
-        "<tr><td colspan='5'>Todavia no hay bicicletas cargadas.</td></tr>";
+        "<tr><td colspan='6'>Todavia no hay bicicletas cargadas.</td></tr>";
 
     }
 }
@@ -170,7 +176,8 @@ function buscarBicicletas() {
                 bicicleta.marca,
                 bicicleta.stock,
                 bicicleta.color,
-                bicicleta.tipo
+                bicicleta.tipo,
+                bicicleta.precio
             ];
 
             for (let j = 0; j < valores.length; j++) {
@@ -194,7 +201,7 @@ function buscarBicicletas() {
     if (cantidad === 0) {
 
         tabla.innerHTML =
-        "<tr><td colspan='5'>No se encontraron bicicletas.</td></tr>";
+        "<tr><td colspan='6'>No se encontraron bicicletas.</td></tr>";
 
     }
 
@@ -217,3 +224,4 @@ botonLimpiar.onclick = function () {
     mostrarBicicletas();
 
 };
+
